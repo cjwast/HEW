@@ -5,16 +5,20 @@ const User = require('../models/Users');
 
 //URL users/
 //GET es una consulta sencilla con todos los registros
-router.get('/', (req, res) => {
-  res.status(200).json({
-    msg: 'should respond with a simple query with all the user records'
-  })
+router.get('/:id', (req, res) => {
+  User.findById(req.params.id)
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      res.status(500).json({ msg: err });
+      console.log(err);
+    })
 });
 
 //URL users/
 //POST creara un nuevo registro]
 router.post('/', (req, res) => {
-  console.log(req.body)
   const { firstName, lastName, email, password, bio } = req.body;
   const newUser = new User({ firstName, lastName, email, password, bio });
   newUser.save()

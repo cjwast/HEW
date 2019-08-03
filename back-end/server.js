@@ -17,7 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /*ROUTES*/
-app.use('/users', require('./routes/Auth'))
+app.use('/users', require('./routes/Auth'));
+app.use('/', require('./routes/Main'));
 
 
 /**LISTEN */
