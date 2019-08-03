@@ -3,6 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const cors = require('cors');
 const MongoStore = require('connect-mongo')(session);
 const app = express();
 
@@ -15,6 +16,7 @@ mongoose.connect('mongodb+srv://appUser:sowxeS-1soxbi-wupnof@cluster0-vx2qk.mong
 /*MIDDLEWARE*/
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 /*ROUTES*/
 app.use('/users', require('./routes/Auth'));

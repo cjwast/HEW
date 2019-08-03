@@ -1,41 +1,37 @@
 <template>
-<div>
-<!-- NAVBAR -->
+  <div>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <router-link to="/" class="navbar-brand">Hew</router-link>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav">
+            <li class="nav-item px-2">
+              <router-link to="/about" class="nav-link">About</router-link>
+            </li>
+          </ul>
+        </div>
 
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-    
-    <div class="container">
-      
-      <router-link to="/" class="navbar-brand">Hew</router-link>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav">
-          <li class="nav-item px-2">
-            <router-link to="/about" class="nav-link">About</router-link>
-          </li>
-        </ul>
-      </div>
-   
-   <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <!-- UNVERIFIED - NOT LOGGED IN -->
 
-    <!-- UNVERIFIED - NOT LOGGED IN -->
-      
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item px-2">
-            <router-link to="/login" class="nav-link">Login</router-link>
-          </li>
-          <li class="nav-item px-2">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item px-2">
+              <router-link to="/login" class="nav-link">Login</router-link>
+            </li>
+            <li class="nav-item px-2">
               <router-link to="/signup" class="nav-link">Signup</router-link>
             </li>
             <li class="nav-item px-2">
               <router-link to="/signup" class="btn btn-success">Curators: Create A Show</router-link>
-          </li>
-        </ul>
+            </li>
+          </ul>
 
-    <!-- VERIFIED - LOGGED IN USER --> 
-      <!-- <ul class="navbar-nav ml-auto">
+          <!-- VERIFIED - LOGGED IN USER -->
+          <!-- <ul class="navbar-nav ml-auto">
           <li class="nav-item px-2">
             <router-link to="/dashboard" class="btn btn-outline-light">Dashboard<span class="badge badge-light ml-2">27</span></router-link>
           </li>
@@ -43,13 +39,12 @@
           <li class="nav-item px-2">
             <router-link to="/new-show" class="btn btn-success">Create A Show</router-link>
           </li>
-        </ul> -->
+          </ul>-->
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-
-<!-- MAIN LISTINGS -->
+    <!-- MAIN LISTINGS -->
 
     <div class="container pt-5 mt-5">
       <div class="row">
@@ -57,108 +52,93 @@
           <h2 class="py-2">Show Details</h2>
         </div>
       </div>
- 
+
       <div class="row">
-    <!-- SHOW LISTINGS & CREATE NEW SHOW-->
-          <div class="col-md-8">
-            <div class="card mb-5">
-              <div class="card-body">
+        <!-- SHOW LISTINGS & CREATE NEW SHOW-->
+        <div class="col-md-8">
+          <div class="card mb-5">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5>Show Title</h5>
+                  <p>First Friday @ Coffice</p>
+                </div>
+                <div class="col-sm-6">
+                  <h5>Show Type</h5>
+                  <p>Solo Show</p>
+                </div>
 
-                  <div class="row">
-                    <div class="col-sm-6">
+                <div class="col-sm-6">
+                  <h5>Start Date</h5>
+                  <p>July 27th, 2019</p>
+                </div>
+                <div class="col-sm-6">
+                  <h5>End Date</h5>
+                  <p>July 29th, 2019</p>
+                </div>
+              </div>
 
-                        <h5>Show Title</h5>
-                        <p>First Friday @ Coffice</p>
+              <h5>Show Overview</h5>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias fuga excepturi quo voluptatibus recusandae suscipit quae et animi temporibus odio inventore placeat reiciendis ad nisi voluptatem delectus beatae quasi velit, ratione accusamus aperiam perspiciatis quisquam. Quos minus aperiam magnam pariatur maxime reiciendis quasi, dolorum nemo et. Corporis omnis minima itaque.</p>
 
-                    </div>
-                    <div class="col-sm-6">
+              <div class="form-group">
+                <h5>Full Description</h5>
+                <h6>Who we are looking for</h6>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias fuga excepturi quo voluptatibus recusandae suscipit quae et animi temporibus odio inventore placeat reiciendis ad nisi voluptatem delectus beatae quasi velit, ratione accusamus aperiam perspiciatis quisquam. Quos minus aperiam magnam pariatur maxime reiciendis quasi, dolorum nemo et. Corporis omnis minima itaque.</p>
+                <h6>Theme</h6>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam atque illo perferendis natus assumenda porro modi, quaerat quam consectetur officiis.</p>
+                <h6>About the space</h6>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, ducimus excepturi temporibus numquam, quae repellendus vel quam ipsum vitae enim praesentium. Enim sint odit iusto perspiciatis repellendus minus, officia rem vel nihil illum nemo? Accusantium quae distinctio atque dolor minima.</p>
+                <h6>Recommended Work Quantity, Size, and Prices</h6>
+                <ul>
+                  <li>Lorem.</li>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>Lorem ipsum dolor sit.</li>
+                  <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti.</li>
+                </ul>
+              </div>
 
-                        <h5>Show Type</h5>
-                        <p>Solo Show</p>
-                     
-                    </div>
-    
-                    <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5>Venue Name</h5>
+                  <p>Coffice</p>
+                </div>
+                <div class="col-sm-6">
+                  <h5>Venue Website</h5>
+                  <a href>http://www.loremipsum.com</a>
+                </div>
 
-                        <h5>Start Date</h5>
-                        <p>July 27th, 2019</p>
+                <div class="col-sm-6">
+                  <h5>Venue Address</h5>
+                  <p>
+                    5555 ipsum dolor.
+                    <br />Lorem, ipsum.
+                    <br />Lorem.
+                    <br />
+                  </p>
+                </div>
+                <div class="col-sm-6">
+                  <h5>Venue Social</h5>
+                  <a href>http://www.instagram.com/venue-name</a>
 
-                    </div>
-                    <div class="col-sm-6">
-                        <h5>End Date</h5>
-                        <p>July 29th, 2019</p>
-                    </div>
-                  </div>
-
-                    <h5>Show Overview</h5>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias fuga excepturi quo voluptatibus recusandae suscipit quae et animi temporibus odio inventore placeat reiciendis ad nisi voluptatem delectus beatae quasi velit, ratione accusamus aperiam perspiciatis quisquam. Quos minus aperiam magnam pariatur maxime reiciendis quasi, dolorum nemo et. Corporis omnis minima itaque.</p>
-
-                  <div class="form-group">
-                      <h5>Full Description</h5>
-                      <h6>Who we are looking for</h6>
-                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias fuga excepturi quo voluptatibus recusandae suscipit quae et animi temporibus odio inventore placeat reiciendis ad nisi voluptatem delectus beatae quasi velit, ratione accusamus aperiam perspiciatis quisquam. Quos minus aperiam magnam pariatur maxime reiciendis quasi, dolorum nemo et. Corporis omnis minima itaque.</p>
-                      <h6>Theme</h6>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam atque illo perferendis natus assumenda porro modi, quaerat quam consectetur officiis.</p>
-                      <h6>About the space</h6>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, ducimus excepturi temporibus numquam, quae repellendus vel quam ipsum vitae enim praesentium. Enim sint odit iusto perspiciatis repellendus minus, officia rem vel nihil illum nemo? Accusantium quae distinctio atque dolor minima.</p>
-                      <h6>Recommended Work Quantity, Size, and Prices</h6>
-                      <ul>
-                        <li>Lorem.</li>
-                        <li>Lorem ipsum dolor sit amet consectetur.</li>
-                        <li>Lorem ipsum dolor sit.</li>
-                        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti.</li>
-                      </ul>
-                  </div>
-
-          <div class="row">
-            <div class="col-sm-6">  
-              <h5>Venue Name</h5>
-              <p>Coffice</p>
-            </div>  
-            <div class="col-sm-6">
-              <h5>Venue Website</h5>
-              <a href="">http://www.loremipsum.com</a>
+                  <h5>Venue Social</h5>
+                  <a href>http://www.facebook.com/venue-name</a>
+                </div>
+              </div>
             </div>
-
-          <div class="col-sm-6">
-
-              <h5>Venue Address</h5>
-              <p>
-                5555 ipsum dolor.<br>
-                Lorem, ipsum.<br>
-                Lorem.<br>
-              </p>
-
+            <div class="card-footer d-flex justify-content-center">
+              <router-link to="/apply" class="btn btn-primary">Arists: Submit Your Work</router-link>
+              <!-- <button class="btn-primary btn text-right">Arists: Submit Your Work</button> -->
+            </div>
           </div>
-          <div class="col-sm-6">
-              <h5>Venue Social</h5>
-              <a href="">http://www.instagram.com/venue-name</a>
+        </div>
 
-              <h5>Venue Social</h5>
-              <a href="">http://www.facebook.com/venue-name</a>
-          </div>
-        </div> 
-
-                
-
-      
-              </div>
-              <div class="card-footer d-flex justify-content-center">
-
-                <router-link to="/apply" class="btn btn-primary">Arists: Submit Your Work</router-link>
-                <!-- <button class="btn-primary btn text-right">Arists: Submit Your Work</button> -->
-              </div>
-                </form>
-              </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-header">
-                  <h4 class="pt-3">Application Info</h4>
-
-              </div>
-            <div class="card-body">              
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="pt-3">Application Info</h4>
+            </div>
+            <div class="card-body">
               <h5>Application Deadline</h5>
               <p>July 27th, 2019</p>
               <h5>When to Include When Applying...</h5>
@@ -170,38 +150,23 @@
               </ul>
             </div>
             <div class="card-footer d-flex justify-content-center">
-                <router-link to="/apply" class="btn btn-primary">Artist Submission</router-link>
+              <router-link to="/apply" class="btn btn-primary">Artist Submission</router-link>
 
-                <!-- <button class="btn-primary btn text-right">Arists: Submit Your Work</button> -->
-              </div>
+              <!-- <button class="btn-primary btn text-right">Arists: Submit Your Work</button> -->
+            </div>
           </div>
-          </div>
-
         </div>
-  </div>
-
-  </div>
+      </div>
     </div>
-
-
-
-
-
-
-</div>
-
+  </div>
 </template>
 
 <script>
-  export default {
-    name: "show-details"
-  }
-
-
-
+export default {
+  name: "show-details"
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>
