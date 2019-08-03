@@ -7,7 +7,7 @@
     
     <div class="container">
       
-      <a href="index.html" class="navbar-brand">Hew</a>
+      <router-link to="/" class="navbar-brand">Hew</router-link>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -15,7 +15,6 @@
         <ul class="navbar-nav">
           <li class="nav-item px-2">
             <router-link to="/about" class="nav-link">About</router-link>
-            <a href="about.html" class="nav-link">About</a>
           </li>
         </ul>
       </div>
@@ -26,24 +25,24 @@
       
         <ul class="navbar-nav ml-auto">
           <li class="nav-item px-2">
-            <a href="login.html" class="nav-link">Login</a>
+            <router-link to="/login" class="nav-link">Login</router-link>
           </li>
           <li class="nav-item px-2">
-              <a href="signup.html" class="nav-link">Signup</a>
+              <router-link to="/signup" class="nav-link">Signup</router-link>
             </li>
             <li class="nav-item px-2">
-              <a href="signup.html" class="btn btn-success">Curators: Create A Show</a>
+              <router-link to="/signup" class="btn btn-success">Curators: Create A Show</router-link>
           </li>
         </ul>
 
     <!-- VERIFIED - LOGGED IN USER --> 
       <!-- <ul class="navbar-nav ml-auto">
           <li class="nav-item px-2">
-            <a href="dashboard.html" class="btn btn-outline-light">Dashboard<span class="badge badge-light ml-2">27</span></a>
+            <router-link to="/dashboard" class="btn btn-outline-light">Dashboard<span class="badge badge-light ml-2">27</span></router-link>
           </li>
 
           <li class="nav-item px-2">
-            <a href="new-show.html" class="btn btn-success">Create A Show</a>
+            <router-link to="/new-show" class="btn btn-success">Create A Show</router-link>
           </li>
         </ul> -->
       </div>
@@ -102,7 +101,7 @@
                   <p class="text-muted my-0 py-0">Deadline: July 24th</p>
                 </div>
                 <div class="row">
-                    <a href="show-details.html" class="btn btn-outline-primary btn-lg mx-3">Artist Submission</a>
+                    <router-link to="/show-details" class="btn btn-outline-primary btn-lg mx-3">Artist Submission</router-link>
                     <!-- <button class="btn btn-outline-primary btn-lg mx-3">Artist Submission</button> -->
                 </div>
               </div>
@@ -212,9 +211,9 @@
     <!-- Copyright -->
     
     <div class="footer-copyright d-flex bg-secondary text-light justify-content-around py-2">
-      <a href="about.html">About</a>
+      <router-link to="/about" class="nav-link">About</router-link>
       <span>© Hew <span id="year"></span></span>
-      <a href="mailto:holahew@gmail.com">Contact</a>
+      <a class="nav-link" href="mailto:holahew@gmail.com">Contact</a>
     </div>
     <!-- Copyright -->
   
@@ -225,19 +224,10 @@
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  mounted () {
-    this.$nextTick(() => {
-      $('.hello').hide();
-      $('.hello').fadeIn('slow');
-    });
+  export default {
+    name: "index.vue"
   }
-}
-
+  
 
 </script>
 

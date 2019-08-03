@@ -1,4 +1,4 @@
-# front_end
+# hew-module-2
 
 ## Project setup
 ```
