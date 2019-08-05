@@ -112,8 +112,8 @@ router.get('/shows/:id/submissions', (req, res, next) => {
 /**URL /shows/:id/submissions */
 //POST regresa el listado de submisiones de un show
 router.post('/shows/:id/submissions', (req, res, next) => {
-  const { show, artisName, artistEmail, website, fullyDescription, imageLink, addtionalLink, status, isSummited } = req.body;
-  const newSubmission = new Submission({ artisName, artistEmail, website, fullyDescription, imageLink, addtionalLink, status, isSummited });
+  const { artisName, artistEmail, website, instagram, fullyDescription, imageLink, addtionalLink, status, isSummited } = req.body;
+  const newSubmission = new Submission({ artisName, artistEmail, website, instagram, fullyDescription, imageLink, addtionalLink, status, isSummited });
   newSubmission.show = req.params.id
   newSubmission.save()
     .then(result => {

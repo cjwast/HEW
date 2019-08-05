@@ -6,10 +6,10 @@ const submissionSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Shows'
   },
-  artisName: String,
   artistName: String,
   artistEmail: String,
   website: String,
+  instagram: String,
   fullyDescription: String,
   imagesLink: String,
   additionalLink: String,

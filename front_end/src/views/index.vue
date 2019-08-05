@@ -72,66 +72,25 @@
         <div class="row">
           <div class="col-md">
             <!-- LISTING CARD START-->
-            <div class="card mb-5">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-sm-7 text-left">
-                    <h5 class="text-muted">Coffice</h5>
-                    <h3>First Friday Show</h3>
-                  </div>
 
-                  <div class="col-sm-5 ml-auto text-right">
-                    <p class="text-muted">Group Show</p>
-                    <p>August 6th, 2019</p>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md card-text text-left">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero porro ratione illum dolores culpa odio excepturi, quis nesciunt non ad.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="row d-flex justify-content-between px-3">
-                  <div class="text-left">
-                    <p class="my-0 py-0">
-                      <strong>27</strong> Submissions
-                      <i class="fas fa-fire-alt text-danger"></i>
-                    </p>
-                    <p class="text-muted my-0 py-0">Deadline: July 24th</p>
-                  </div>
-                  <div class="row">
-                    <router-link
-                      to="/show-details"
-                      class="btn btn-outline-primary btn-lg mx-3"
-                    >Artist Submission</router-link>
-                    <!-- <button class="btn btn-outline-primary btn-lg mx-3">Artist Submission</button> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- LISTING CARD START-->
-            <div class="card mb-5">
+            <div class="card mb-5" v-for="(show, i) of shows" :key="i">
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-8 text-left">
-                    <h5 class="text-muted">Coffice</h5>
-                    <h3>First Friday Show</h3>
+                    <h5 class="text-muted">{{show.venue.name}}</h5>
+                    <h3>{{show.title}}</h3>
                   </div>
 
                   <div class="col-sm-4 ml-auto text-right">
-                    <p class="text-muted">Group Show</p>
-                    <p>August 6th, 2019</p>
+                    <p class="text-muted">{{show.showtype}}</p>
+                    <p>{{show.endDate}}</p>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="row">
                   <div class="col-md card-text text-left">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero porro ratione illum dolores culpa odio excepturi, quis nesciunt non ad.</p>
+                    <p>{{show.overview}}</p>
                   </div>
                 </div>
               </div>
@@ -139,17 +98,16 @@
                 <div class="row d-flex justify-content-between px-3">
                   <div class="text-left">
                     <p class="my-0 py-0">
-                      <strong>27</strong> Submissions
+                      <strong>{{(show.numberOfSubmissions==undefined?0:show.numberOfSubmissions)}}</strong> Submissions
                       <i class="fas fa-fire-alt text-danger"></i>
                     </p>
-                    <p class="text-muted my-0 py-0">Deadline: July 24th</p>
+                    <p class="text-muted my-0 py-0">Deadline: {{show.applicationDeadLine}}</p>
                   </div>
                   <div class="row">
-                    <a
-                      href="show-details.html"
+                    <router-link
                       class="btn btn-outline-primary btn-lg mx-3"
-                    >Artist Submission</a>
-                    <!-- <button class="btn btn-outline-primary btn-lg mx-3">Artist Submission</button> -->
+                      :to="{name:'show-details', params: {id:show._id}}"
+                    >Artist Submission</router-link>
                   </div>
                 </div>
               </div>

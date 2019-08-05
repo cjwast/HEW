@@ -61,61 +61,44 @@
               <div class="row">
                 <div class="col-sm-6">
                   <h5>Show Title</h5>
-                  <p>First Friday @ Coffice</p>
+                  <p>{{show.title}} @ {{show.venue.name}}</p>
                 </div>
                 <div class="col-sm-6">
                   <h5>Show Type</h5>
-                  <p>Solo Show</p>
+                  <p>{{show.showType==1?'Solo Show':'Group Show'}}</p>
                 </div>
 
                 <div class="col-sm-6">
                   <h5>Start Date</h5>
-                  <p>July 27th, 2019</p>
+                  <p>{{show.startDate}}</p>
                 </div>
                 <div class="col-sm-6">
                   <h5>End Date</h5>
-                  <p>July 29th, 2019</p>
+                  <p>{{show.endDate}}</p>
                 </div>
               </div>
 
               <h5>Show Overview</h5>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias fuga excepturi quo voluptatibus recusandae suscipit quae et animi temporibus odio inventore placeat reiciendis ad nisi voluptatem delectus beatae quasi velit, ratione accusamus aperiam perspiciatis quisquam. Quos minus aperiam magnam pariatur maxime reiciendis quasi, dolorum nemo et. Corporis omnis minima itaque.</p>
+              <p>{{show.overview}}</p>
 
               <div class="form-group">
                 <h5>Full Description</h5>
-                <h6>Who we are looking for</h6>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias fuga excepturi quo voluptatibus recusandae suscipit quae et animi temporibus odio inventore placeat reiciendis ad nisi voluptatem delectus beatae quasi velit, ratione accusamus aperiam perspiciatis quisquam. Quos minus aperiam magnam pariatur maxime reiciendis quasi, dolorum nemo et. Corporis omnis minima itaque.</p>
-                <h6>Theme</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam atque illo perferendis natus assumenda porro modi, quaerat quam consectetur officiis.</p>
-                <h6>About the space</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, ducimus excepturi temporibus numquam, quae repellendus vel quam ipsum vitae enim praesentium. Enim sint odit iusto perspiciatis repellendus minus, officia rem vel nihil illum nemo? Accusantium quae distinctio atque dolor minima.</p>
-                <h6>Recommended Work Quantity, Size, and Prices</h6>
-                <ul>
-                  <li>Lorem.</li>
-                  <li>Lorem ipsum dolor sit amet consectetur.</li>
-                  <li>Lorem ipsum dolor sit.</li>
-                  <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti.</li>
-                </ul>
+                {{show.fullDescription}}
               </div>
 
               <div class="row">
                 <div class="col-sm-6">
                   <h5>Venue Name</h5>
-                  <p>Coffice</p>
+                  <p>{{show.venue.name}}</p>
                 </div>
                 <div class="col-sm-6">
                   <h5>Venue Website</h5>
-                  <a href>http://www.loremipsum.com</a>
+                  <a href>{{show.venue.webSite}}</a>
                 </div>
 
                 <div class="col-sm-6">
                   <h5>Venue Address</h5>
-                  <p>
-                    5555 ipsum dolor.
-                    <br />Lorem, ipsum.
-                    <br />Lorem.
-                    <br />
-                  </p>
+                  <p>{{show.venue.address1}}</p>
                 </div>
                 <div class="col-sm-6">
                   <h5>Venue Social</h5>
@@ -127,8 +110,10 @@
               </div>
             </div>
             <div class="card-footer d-flex justify-content-center">
-              <router-link to="/apply" class="btn btn-primary">Arists: Submit Your Work</router-link>
-              <!-- <button class="btn-primary btn text-right">Arists: Submit Your Work</button> -->
+              <router-link
+                class="btn btn-primary"
+                :to="{name:'apply', params:{id:show._id}}"
+              >Arists: Submit Your Work</router-link>
             </div>
           </div>
         </div>
@@ -163,7 +148,16 @@
 
 <script>
 export default {
-  name: "show-details"
+  name: "show-details",
+  props: ["id"],
+  data() {
+    return { show: {} };
+  },
+  mounted() {
+    fetch("http://localhost:3000/shows/" + this.id)
+      .then(data => data.json())
+      .then(res => (this.show = res));
+  }
 };
 </script>
 

@@ -63,77 +63,90 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="exampleFormControlInput1">Your Name</label>
+                      <label for="artistName">Your Name</label>
                       <input
+                        v-model="submission.artistName"
                         type="text"
                         class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="Title"
+                        id="artistName"
+                        placeholder="Name"
                       />
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="exampleFormControlInput1">Your Email</label>
+                      <label for="artistEmail">Your Email</label>
                       <input
-                        type="text"
+                        v-model="submission.artistEmail"
+                        type="email"
                         class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="Title"
+                        id="artistEmail"
+                        placeholder="Email"
                       />
                     </div>
                   </div>
 
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="exampleFormControlInput1">Website / Portfolio</label>
+                      <label for="website">Website / Portfolio</label>
                       <input
-                        type="text"
+                        v-model="submission.website"
+                        type="url"
                         class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="Title"
+                        id="website"
+                        placeholder="Website / Portfolio"
                       />
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="exampleFormControlInput1">Instagram</label>
+                      <label for="instagram">Instagram</label>
                       <input
-                        type="text"
+                        v-model="submission.instagram"
+                        type="url"
                         class="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="Title"
+                        id="instagram"
+                        placeholder="Instagram!!"
                       />
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Link to Photos of Submitted Work</label>
+                  <label for="imagesLink">Link to Photos of Submitted Work</label>
                   <input
-                    type="text"
+                    v-model="submission.imagesLink"
+                    type="url"
                     class="form-control"
-                    id="exampleFormControlInput1"
+                    id="imagesLink"
                     placeholder="Dropbox, Google Drive, etc..."
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Link to Supplemental Material</label>
+                  <label for="additinalLink">Link to Supplemental Material</label>
                   <input
-                    type="text"
+                    v-model="submission.additionalLink"
+                    type="url"
                     class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Artist Statement PDF, etc..."
+                    id="additinalLink"
+                    placeholder="Dropbox, Google Drive, etc..."
                   />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Additional Submission Information</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                  <label for="fullyDescription">Additional Submission Information</label>
+
+                  <textarea
+                    v-model="submission.fullyDescription"
+                    type="url"
+                    class="form-control"
+                    id="fullyDescription"
+                    rows="10"
+                    placeholder="Dropbox, Google Drive, etc..."
+                  ></textarea>
+                </div>
+                <div class="card-footer d-flex justify-content-center">
+                  <button @click="postSubmission()" class="btn btn-primary">Submit Application</button>
                 </div>
               </form>
-            </div>
-            <div class="card-footer d-flex justify-content-center">
-              <router-link to="/" class="btn btn-primary">Submit Application</router-link>
-              <!-- <button class="btn-primary btn text-right">Submit Application</button> -->
             </div>
           </div>
         </div>
@@ -203,7 +216,38 @@
 
 <script>
 export default {
-  name: "apply"
+  name: "apply",
+  props: ["id"],
+  data() {
+    return {
+      submission: {
+        artistName: "",
+        artistEmail: "",
+        website: "",
+        instagram: "",
+        fullyDescription: "",
+        imagesLink: "",
+        additionalLink: "",
+        status: "",
+        isSummited: false
+      }
+    };
+  },
+  methods: {
+    postSubmission() {
+      fetch(`http://localhost:3000/shows/${this.id}/submissions`, {
+        method: "POST",
+        body: JSON.stringify(this.submission),
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(data => console.log(data));
+    }
+  },
+  mounted() {}
 };
 </script>
 

@@ -16,21 +16,21 @@ import showDetails from './views/show-details.vue'
 import jQuery from 'jquery'
 global.jQuery = jQuery
 global.$ = jQuery
-let Bootstrap = require('bootstrap')
 import 'bootstrap/dist/css/bootstrap.css'
 
-const routes =  [{
-  path: '/', 
-  name:'home', 
-  component: index, 
+const routes = [{
+  path: '/',
+  name: 'home',
+  component: index,
 }, {
   path: '/about',
   name: 'about',
   component: about,
 }, {
-  path: '/apply',
+  path: '/apply/:id',
   name: 'apply',
   component: apply,
+  props: true
 }, {
   path: '/dashboard',
   name: 'dashboard',
@@ -51,11 +51,14 @@ const routes =  [{
   path: '/review-application',
   name: 'review-application',
   component: reviewApplication,
-}, {
-  path: '/show-details',
+},
+{
+  path: '/show-details/:id',
   name: 'show-details',
   component: showDetails,
-}]
+  props: true
+},
+]
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
