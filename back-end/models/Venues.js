@@ -5,6 +5,9 @@ const venueSchema = new Schema({
   name: String,
   address1: String,
   webSite: String,
-});
+},
+  {
+    timestamps: true
+  });
 
 module.exports = mongoose.model('Venues', venueSchema);

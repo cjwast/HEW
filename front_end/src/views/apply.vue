@@ -245,6 +245,8 @@ export default {
       })
         .then(res => res.json())
         .then(data => console.log(data));
+      //Para cambiar de ruta a la de agradecimiento
+      //router.push({ name: 'user', params: { userId: 123 }})
     }
   },
   mounted() {}

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/Users');
+const bcrypt = require('bcrypt');
+const bcryptSalt = 10;
 
 //URL users/
 //GET es una consulta sencilla con todos los registros
@@ -19,8 +21,28 @@ router.get('/:id', (req, res) => {
 //URL users/
 //POST creara un nuevo registro]
 router.post('/', (req, res) => {
-  const { firstName, lastName, email, password, bio } = req.body;
-  const newUser = new User({ firstName, lastName, email, password, bio });
+  const { firstName, lastName, email, password } = req.body;
+  const newUser = new User({ firstName, lastName, email, password });
+
+  if (email === "" || password === "") {
+    res.status(401).json({ message: "Indicate username and password" });
+    return;
+  }
+
+
+  User.findOne({ email })
+    .then(user => {
+      console.log(`comparacion => ${user != null}`)
+      if (user != null) {
+        console.log(`usuario =>${user}`)
+        res.status(401).json({ message: "the user already exist" });
+      }
+    });
+
+  const salt = bcrypt.genSaltSync(bcryptSalt);
+  const hashPass = bcrypt.hashSync(password, salt);
+  newUser.password = hashPass;
+
   newUser.save()
     .then(userResponse => {
       res.status(200).json(userResponse);

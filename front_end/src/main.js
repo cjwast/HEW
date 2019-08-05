@@ -58,6 +58,7 @@ const routes = [{
   component: showDetails,
   props: true
 },
+  /**a route for OK submissions message is missing */
 ]
 
 Vue.config.productionTip = false
