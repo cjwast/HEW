@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
   const newUser = new User({ firstName, lastName, email, password });
 
   if (email === "" || password === "") {
-    res.status(401).json({ message: "Indicate username and password" });
+    return res.status(401).json({ message: "Indicate username and password" });
     return;
   }
 
@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
       console.log(`comparacion => ${user != null}`)
       if (user != null) {
         console.log(`usuario =>${user}`)
-        res.status(401).json({ message: "the user already exist" });
+        return res.status(401).json({ message: "the user already exist" });
       }
     });
 
