@@ -16,7 +16,10 @@ import showDetails from './views/show-details.vue'
 import jQuery from 'jquery'
 global.jQuery = jQuery
 global.$ = jQuery
+
+
 import 'bootstrap/dist/css/bootstrap.css'
+import './style.scss'
 
 const routes = [{
   path: '/',

@@ -46,7 +46,7 @@
 
     <!-- JUMBOTRON -->
 
-    <div class="jumbotron bg-secondary text-light text-center mt-5">
+    <div class="jumbotron text-light text-center mt-5">
       <h1 class="display-4">Open Calls for Art</h1>
     </div>
 
