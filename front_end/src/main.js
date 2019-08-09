@@ -11,7 +11,7 @@ import signup from './views/signup.vue'
 import newShow from './views/new-show.vue'
 import reviewApplication from './views/review-application.vue'
 import showDetails from './views/show-details.vue'
-
+import submissionConfirmed from './views/submission-confirmed.vue'
 
 
 import jQuery from 'jquery'
@@ -64,6 +64,9 @@ const routes = [
     path: '/new-show',
     name: 'new-show',
     component: newShow,
+    beforeEnter: (to, from, next) => {
+      auth({ next, router });
+    },
   },
   {
     path: '/review-application',
@@ -71,13 +74,18 @@ const routes = [
     component: reviewApplication,
   },
   {
+    path: '/confirmed',
+    name: 'confirmed',
+    component: submissionConfirmed,
+  },
+  {
     path: '/show-details/:id',
     name: 'show-details',
     component: showDetails,
     //pasara por acá para cada peticion a esta ruta
-    // beforeEnter: (to, from, next) => {
-    //   auth({ next, router });
-    // },
+    beforeEnter: (to, from, next) => {
+      auth({ next, router });
+    },
     props: true
   },
   /**a route for OK submissions message is missing */

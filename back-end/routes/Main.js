@@ -48,20 +48,6 @@ router.post('/shows', (req, res) => {
       res.status(500).json({ msg: err });
       console.log(err);
     });
-
-
-  ///codigo para crear el show a secas
-
-  // const { title, showType, applicationDeadline, overview, fullDescription, applicationInstrucions, startDate, endDate, isPublished, curator } = req.body;
-  // const newShow = new Show({ title, showType, venue, applicationDeadline, overview, fullDescription, applicationInstrucions, startDate, endDate, isPublished, curator });
-  // newShow.save()
-  //   .then(result => {
-  //     res.status(200).json({ msg: 'the show has been successfully created' })
-  //   })
-  //   .catch(err => {
-  //     res.status(500).json({ msg: err });
-  //     console.log(err);
-  //   })
 });
 
 /**URL /dashboard/:userID */
@@ -112,16 +98,20 @@ router.get('/shows/:id/submissions', (req, res, next) => {
 /**URL /shows/:id/submissions */
 //POST regresa el listado de submisiones de un show
 router.post('/shows/:id/submissions', (req, res, next) => {
-  const { artisName, artistEmail, website, instagram, fullyDescription, imageLink, addtionalLink, status, isSummited } = req.body;
-  const newSubmission = new Submission({ artisName, artistEmail, website, instagram, fullyDescription, imageLink, addtionalLink, status, isSummited });
+  const { artistName, artistEmail, website, instagram, fullyDescription, imageLink, addtionalLink, status, isSummited } = req.body;
+  const newSubmission = new Submission({ artistName, artistEmail, website, instagram, fullyDescription, imageLink, addtionalLink, status, isSummited });
   newSubmission.show = req.params.id
   newSubmission.save()
     .then(result => {
-      res.status(200).json({ msg: 'the show has been successfully created' })
+      res.status(200).json(
+        {
+          status: 'ok',
+          msg: 'the show has been successfully created'
+        }
+      )
     })
     .catch(err => {
       res.status(500).json({ msg: err });
-      console.log(err);
     })
 });
 module.exports = router;

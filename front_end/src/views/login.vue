@@ -80,6 +80,10 @@
                     <button @click="postLogin" class="btn btn-secondary">Login</button>
                     <!-- <button type="submit" class="btn btn-secondary">Login</button> -->
                   </div>
+
+                  <div class="d-flex justify-content-between align-items-center text-light">
+                    <div class="alert alert-danger" v-show="show" role="alert">{{message}}</div>
+                  </div>
                 </form>
               </div>
             </div>
@@ -139,9 +143,11 @@ export default {
   data() {
     return {
       login: {
-        email: "",
-        password: ""
-      }
+        email: "carlosalv@synnex.com",
+        password: "password"
+      },
+      message: "",
+      show: false
     };
   },
   component: {},
@@ -159,10 +165,23 @@ export default {
 
       resultado
         .then(response => {
-          localStorage.setItem("token", response.data.token);
+          //Verificamos si el token fue devuelto por el back-end
+          if (response.data.token !== undefined) {
+            //
+            localStorage.setItem("token", response.data.token);
+            this.message = "";
+            this.show = false;
+            window.history.length > 1
+              ? this.$router.go(-1)
+              : this.$router.push("/");
+          } else {
+            localStorage.setItem("token", "");
+            this.message = "invalid credentials please try again";
+            this.show = true;
+          }
         })
-        .catch(function(err) {
-          console.log(err);
+        .catch(err => {
+          console.log(`Este es el error => ${err}`);
         });
     }
   }

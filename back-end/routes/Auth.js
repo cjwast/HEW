@@ -90,12 +90,12 @@ router.post('/login', (req, res, next) => {
         }
         else {
           //mensaje ambiguo
-          res.status(401).json({ message: "please verify the information" });
+          res.status(200).json({ message: "please verify the information" });
         }
       }
       else {
         //mensaje ambiguo
-        res.status(401).json({ message: "please verify the information" });
+        res.status(200).json({ message: "please verify the information" });
       }
     })
     .catch(err => console.log(err));

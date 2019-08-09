@@ -144,7 +144,7 @@
                   ></textarea>
                 </div>
                 <div class="card-footer d-flex justify-content-center">
-                  <button @click="postSubmission()" class="btn btn-primary">Submit Application</button>
+                  <button @click="postSubmission" class="btn btn-primary">Submit Application</button>
                 </div>
               </form>
             </div>
@@ -215,6 +215,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "apply",
   props: ["id"],
@@ -230,31 +232,53 @@ export default {
         additionalLink: "",
         status: "",
         isSummited: false
-      }
+      },
+      message: ""
     };
   },
   methods: {
-    postSubmission() {
-      fetch(`http://localhost:3000/shows/${this.id}/submissions`, {
-        method: "POST",
-        body: JSON.stringify(this.submission),
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json"
-        }
-      })
-        .then(function(response) {
-          return response.json();
+    postSubmission(e) {
+      e.preventDefault();
+
+      const resultado = axios({
+        method: "post",
+        url: `http://localhost:3000/shows/${this.id}/submissions`,
+        data: this.submission,
+        responseType: "json"
+      });
+
+      resultado
+        .then(response => {
+          //Verificamos si el token fue devuelto por el back-end
+          if (response.data.status !== undefined) {
+            console.log("fue creado el registro");
+            this.$router.push("/confirmed");
+          } else {
+            console.log(response);
+          }
         })
-        .then(function(myJson) {
-          console.log(myJson);
+        .catch(err => {
+          console.log(`Este es el error => ${err}`);
         });
 
-      //Para cambiar de ruta a la de agradecimiento
+      // fetch(`http://localhost:3000/shows/${this.id}/submissions`, {
+      //   method: "POST",
+      //   body: JSON.stringify(this.submission),
+      //   headers: {
+      //     Accept: "application/json",
+      //     "Content-type": "application/json"
+      //   }
+      // })
+      //   .then(function(response) {
+      //     return response.json();
+      //   })
+      //   .then(function(myJson) {
+      //     console.log(myJson);
+      //   });
+
       //router.push({ name: 'user', params: { userId: 123 }})
     }
-  },
-  mounted() {}
+  }
 };
 </script>
 
