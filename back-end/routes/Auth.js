@@ -71,8 +71,11 @@ router.post('/login', (req, res, next) => {
     return;
   }
 
+  console.log(`email recibido => ${email}, password => ${password}`)
+
   User.findOne({ 'email': email })
     .then(user => {
+      console.log(`usuario encontrado=> ${user}`)
       if (user !== null) {
         //que si existe usuario
         //comparamos el pasword
@@ -87,12 +90,12 @@ router.post('/login', (req, res, next) => {
         }
         else {
           //mensaje ambiguo
-          return res.status(401).json({ message: "please verify the information" });
+          res.status(401).json({ message: "please verify the information" });
         }
       }
       else {
         //mensaje ambiguo
-        return res.status(401).json({ message: "please verify the information" });
+        res.status(401).json({ message: "please verify the information" });
       }
     })
     .catch(err => console.log(err));

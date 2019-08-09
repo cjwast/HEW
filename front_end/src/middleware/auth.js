@@ -1,5 +1,6 @@
 export default function auth({ next, router }) {
-  if (!localStorage.getItem('jwt')) {
+  console.log(`si paso por aca`)
+  if (!localStorage.getItem('token')) {
     return router.push({ name: 'login' });
   }
 

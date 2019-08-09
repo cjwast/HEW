@@ -55,11 +55,21 @@
                 <form>
                   <div class="form-group mt-3">
                     <label>Email</label>
-                    <input type="email" class="form-control" placeholder="Email" />
+                    <input
+                      type="email"
+                      v-model="login.email"
+                      class="form-control"
+                      placeholder="Email"
+                    />
                   </div>
                   <div class="form-group mb-4">
                     <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Password" />
+                    <input
+                      type="password"
+                      v-model="login.password"
+                      class="form-control"
+                      placeholder="Password"
+                    />
                   </div>
 
                   <div class="d-flex justify-content-between align-items-center text-light">
@@ -67,7 +77,7 @@
                       No account?
                       <a href="signup.html">Sign Up.</a>
                     </p>
-                    <a href="dashboard.html" class="btn btn-secondary">Login</a>
+                    <button @click="postLogin" class="btn btn-secondary">Login</button>
                     <!-- <button type="submit" class="btn btn-secondary">Login</button> -->
                   </div>
                 </form>
@@ -122,11 +132,42 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "login"
+  name: "login",
+  data() {
+    return {
+      login: {
+        email: "",
+        password: ""
+      }
+    };
+  },
+  component: {},
+  methods: {
+    postLogin(e) {
+      //Metodo para evitar el refresh desde el browser
+      e.preventDefault();
+
+      const resultado = axios({
+        method: "post",
+        url: "http://localhost:3000/users/login",
+        data: this.login,
+        responseType: "json"
+      });
+
+      resultado
+        .then(response => {
+          localStorage.setItem("token", response.data.token);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    }
+  }
 };
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>

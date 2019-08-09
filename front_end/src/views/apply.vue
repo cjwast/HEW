@@ -243,8 +243,13 @@ export default {
           "Content-type": "application/json"
         }
       })
-        .then(res => res.json())
-        .then(data => console.log(data));
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(myJson) {
+          console.log(myJson);
+        });
+
       //Para cambiar de ruta a la de agradecimiento
       //router.push({ name: 'user', params: { userId: 123 }})
     }

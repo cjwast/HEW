@@ -16,7 +16,10 @@ mongoose.connect('mongodb+srv://appUser:sowxeS-1soxbi-wupnof@cluster0-vx2qk.mong
 /*MIDDLEWARE*/
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:8080']
+}));
 
 /*ROUTES*/
 app.use('/users', require('./routes/Auth'));
