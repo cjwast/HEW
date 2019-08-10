@@ -260,28 +260,7 @@ export default {
         .catch(err => {
           console.log(`Este es el error => ${err}`);
         });
-
-      // fetch(`http://localhost:3000/shows/${this.id}/submissions`, {
-      //   method: "POST",
-      //   body: JSON.stringify(this.submission),
-      //   headers: {
-      //     Accept: "application/json",
-      //     "Content-type": "application/json"
-      //   }
-      // })
-      //   .then(function(response) {
-      //     return response.json();
-      //   })
-      //   .then(function(myJson) {
-      //     console.log(myJson);
-      //   });
-
-      //router.push({ name: 'user', params: { userId: 123 }})
     }
   }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>

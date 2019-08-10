@@ -28,13 +28,17 @@
             <li class="nav-item px-2">
               <router-link to="/new-show" class="btn btn-success">Curators: Create A Show</router-link>
             </li>
+            <li class="nav-item px-2">
+              <router-link to="/dashboard" class="btn btn-outline-light">
+                Dashboard
+                <!-- <span class="badge badge-light ml-2">27</span> -->
+              </router-link>
+            </li>
           </ul>
 
           <!-- VERIFIED - LOGGED IN USER -->
           <!-- <ul class="navbar-nav ml-auto">
-          <li class="nav-item px-2">
-            <router-link to="/dashboard" class="btn btn-outline-light">Dashboard<span class="badge badge-light ml-2">27</span></router-link>
-          </li>
+          
 
           <li class="nav-item px-2">
             <router-link to="/new-show" class="btn btn-success">Create A Show</router-link>
@@ -54,8 +58,6 @@
     <cards></cards>
     <!-- look this tag at components folder -->
 
-
-    
     <!-- FOOTER -->
     <footer class="page-footer font-small pt-4 mt-5 bg-light">
       <div class="container">

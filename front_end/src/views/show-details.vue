@@ -29,17 +29,6 @@
               <router-link to="/signup" class="btn btn-success">Curators: Create A Show</router-link>
             </li>
           </ul>
-
-          <!-- VERIFIED - LOGGED IN USER -->
-          <!-- <ul class="navbar-nav ml-auto">
-          <li class="nav-item px-2">
-            <router-link to="/dashboard" class="btn btn-outline-light">Dashboard<span class="badge badge-light ml-2">27</span></router-link>
-          </li>
-
-          <li class="nav-item px-2">
-            <router-link to="/new-show" class="btn btn-success">Create A Show</router-link>
-          </li>
-          </ul>-->
         </div>
       </div>
     </nav>
@@ -100,13 +89,6 @@
                   <h5>Venue Address</h5>
                   <p>{{show.venue.address1}}</p>
                 </div>
-                <div class="col-sm-6">
-                  <h5>Venue Social</h5>
-                  <a href>http://www.instagram.com/venue-name</a>
-
-                  <h5>Venue Social</h5>
-                  <a href>http://www.facebook.com/venue-name</a>
-                </div>
               </div>
             </div>
             <div class="card-footer d-flex justify-content-center">
@@ -125,19 +107,12 @@
             </div>
             <div class="card-body">
               <h5>Application Deadline</h5>
-              <p>July 27th, 2019</p>
-              <h5>When to Include When Applying...</h5>
-              <ul>
-                <li>Name</li>
-                <li>3-4 Pieces of Work (less than 100x100cm)</li>
-                <li>Artist Statement</li>
-                <li>Why would you be a good fit?</li>
-              </ul>
+              <p>{{show.applicationDeadLine}}</p>
+              <h5>What to include...</h5>
+              <p class="text-justify">{{show.applicationInstructions}}</p>
             </div>
             <div class="card-footer d-flex justify-content-center">
               <router-link to="/apply" class="btn btn-primary">Artist Submission</router-link>
-
-              <!-- <button class="btn-primary btn text-right">Arists: Submit Your Work</button> -->
             </div>
           </div>
         </div>
@@ -160,7 +135,3 @@ export default {
   }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>

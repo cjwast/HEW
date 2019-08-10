@@ -29,17 +29,6 @@
               <router-link to="/signup" class="btn btn-success">Curators: Create A Show</router-link>
             </li>
           </ul>
-
-          <!-- VERIFIED - LOGGED IN USER -->
-          <!-- <ul class="navbar-nav ml-auto">
-          <li class="nav-item px-2">
-            <router-link to="/dashboard" class="btn btn-outline-light">Dashboard<span class="badge badge-light ml-2">27</span></router-link>
-          </li>
-
-          <li class="nav-item px-2">
-            <router-link to="/new-show" class="btn btn-success">Create A Show</router-link>
-          </li>
-          </ul>-->
         </div>
       </div>
     </nav>
@@ -64,7 +53,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="exampleFormControlInput1">Show Title</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+                        <input type="text" class="form-control" id="showTitle" placeholder="Title" v-model="show.title">
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -72,35 +61,35 @@
                         <label for="exampleFormControlInput1">Show Type</label>
                       </div>
                       <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                          <label class="form-check-label" for="inlineRadio1">Solo Show</label>
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="showTypeSolo" value="1" v-model="show.showType">
+                          <label class="form-check-label" for="showTypeSolo">Solo Show</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                          <label class="form-check-label" for="inlineRadio2">Group Show</label>
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="showTypeGroup" value="2" v-model="show.showType">
+                          <label class="form-check-label" for="showTypeGroup">Group Show</label>
                         </div>
                     </div>
     
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="exampleFormControlInput1">Start Date</label>
-                        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        <input type="date" class="form-control" id="showStartDate" placeholder="" v-model="show.startDate">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="exampleFormControlInput1">End Date</label>
-                        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        <input type="date" class="form-control" id="showEndDate" placeholder="" v-model="show.endDate">
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">Show Overview</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" id="showOverview" rows="3" v-model="show.overview"></textarea>
                   </div>
                   <div class="form-group">
                       <label for="exampleFormControlTextarea1">Full Description</label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                      <textarea class="form-control" id="showFullDescription" rows="10" v-model="show.fullDescription"></textarea>
                   </div>
 
 
@@ -109,31 +98,21 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="exampleFormControlInput1">Venue Name</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+              <input type="text" class="form-control" id="venueName" placeholder="Name of the cool venue you like" v-model="show.name">
             </div>
           </div>
           <div class="col-sm-6">
           <div class="form-group">
                 <label for="exampleFormControlInput1">Venue Website</label>
-                <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="https://">
+                <input type="url" class="form-control" id="venueWebSite" placeholder="https://" v-model="show.webSite">
               </div>
           </div>
 
           <div class="col-sm-6">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Venue Address</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+              <textarea class="form-control" id="venueAddress" rows="5" v-model="show.address1"></textarea>
             </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label for="exampleFormControlInput1">Venue Social Handle (1)</label>
-              <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="https://">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Venue Social Handle (2)</label>
-                <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="https://">
-              </div>
           </div>
         </div> 
 
@@ -141,17 +120,20 @@
                 <h4 class="pt-3">Application Info</h4>
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Application Deadline</label>
-                  <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                  <input type="date" class="form-control" id="showAppicationDeadLine" v-model="show.applicationDeadLine">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Include In Submission...</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    <textarea class="form-control" id="showApplicationInstruccions" rows="5" v-model="show.applicationInstructions"></textarea>
                 </div>
       
               </div>
               <div class="card-footer d-flex justify-content-between">
-                <button class="btn-dark btn text-right">Preview</button>
-                <button class="btn-success btn text-right">Publish Show</button>
+                <!-- <button class="btn-dark btn text-right">Preview</button> -->
+                <button @click="postShow" class="btn-success btn text-right">Publish Show</button>
+
+
+
               </div>
               </form>
 
@@ -211,9 +193,65 @@
 </template>
 
 <script>
+
+import axios from "axios";
+
 export default {
-  name: "new-show"
+  name: "new-show",
+  data() {
+    return {
+      show: {
+        title: "",
+        showType: "",
+        name: "",
+        address1: "",
+        webSite:"",
+        applicationDeadLine: new Date,
+        overview: "",
+        fullDescription: "",
+        applicationInstructions: "",
+        startDate:  new Date,
+        endDate:  new Date
+      }
+    }
+  },
+  methods: {
+    postShow(e){
+      e.preventDefault();
+      
+      const resultado = axios({
+        method:"POST",
+        url: "http://localhost:3000/shows",
+        data: {
+          show: this.show,
+          token: localStorage.getItem("token"),
+        },
+        responseType : "json"
+      });
+
+      resultado
+      .then(response =>{
+        if (response.data.status !== undefined) {
+          //caso que no haya error
+          this.$router.push("/dashboard");
+        } else {
+          //si el error es por la session, habrá que remover el token
+          if (response.data.message === "jwt expired") {
+            localStorage.setItem("token", '');
+            this.$router.push("/login");
+          } else {
+            console.log(response)            
+          }
+        }
+      })
+      .catch(err => {
+          console.log(`Este es el error => ${err}`);
+        });
+    }
+  },
 };
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

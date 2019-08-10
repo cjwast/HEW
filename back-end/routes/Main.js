@@ -6,6 +6,7 @@ const Show = require('../models/Shows');
 const Submission = require('../models/Submissions');
 const User = require('../models/Users');
 const Venue = require('../models/Venues');
+const jwt = require('jsonwebtoken');
 
 
 /**URL /shows */
@@ -27,32 +28,43 @@ router.get('/shows', (req, res) => {
 //POST creara un nuevo show
 router.post('/shows', (req, res) => {
   let data = req.body;
-  let venue = new Venue();
-  const { name, address1, webSite } = req.body;
-  Venue.create({ name, address1, webSite })
-    .then(successVenue => {
-      const { title, showType, applicationDeadline, overview, fullDescription, applicationInstrucions, startDate, endDate, isPublished, curator } = req.body;
-      const newShow = new Show({ title, showType, applicationDeadline, overview, fullDescription, applicationInstrucions, startDate, endDate, isPublished, curator });
-      newShow.venue = successVenue.id;
-      newShow.save()
-        .then(result => {
-          res.status(200).json(result)
+  //first of all validate the token
+  jwt.verify(data.token, 'secretkey', (err, authData) => {
+    if (err) {
+      res.status(200).json({ message: err.message });
+    } else {
+      //caso que no hay error
+      const { name, address1, webSite } = data.show;
+      Venue.create({ name, address1, webSite })
+        .then(successVenue => {
+          const { title, showType, applicationDeadLine, overview, fullDescription, applicationInstructions, startDate, endDate } = data.show;
+          const newShow = new Show({ title, showType, applicationDeadLine, overview, fullDescription, applicationInstructions, startDate, endDate, });
+          newShow.venue = successVenue.id;
+          newShow.isPublished = true;
+          newShow.curator = authData.user._id
+          newShow.save()
+            .then(result => {
+              res.status(200).json({ status: 'ok' })
+            })
+            .catch(err => {
+              res.status(500).json({ msg: err });
+              console.log(err);
+            })
+
         })
         .catch(err => {
           res.status(500).json({ msg: err });
           console.log(err);
-        })
-
-    })
-    .catch(err => {
-      res.status(500).json({ msg: err });
-      console.log(err);
-    });
+        });
+    }
+  });
 });
 
 /**URL /dashboard/:userID */
-//GET returns a lis of shows by user id
-router.get('/dashboard/:userID', (req, res, next) => {
+//POST returns a lis of shows by user id
+router.post('/dashboard/', (req, res, next) => {
+  const { token } = req.body;
+
   Show.find({ curator: req.params.userID })
     .populate('curator')
     .populate('venue')

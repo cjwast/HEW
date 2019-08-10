@@ -88,11 +88,22 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "dashboard"
+  name: "dashboard",
+  data() {
+    return {
+      shows: []
+    };
+  }
+  // created(e) {
+  //   e.preventDefault();
+
+  //   const result = axios({
+  //     method: "POST",
+  //     url: ""
+  //   });
+  // }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>
