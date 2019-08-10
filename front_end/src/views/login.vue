@@ -135,10 +135,10 @@ export default {
   data() {
     return {
       login: {
-        email: "carlosalv@synnex.com",
-        password: "password"
-        // email: "",
-        // password: ""
+        // email: "carlosalv@synnex.com",
+        // password: "password"
+        email: "",
+        password: ""
       },
       message: "",
       show: false
