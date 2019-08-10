@@ -133,7 +133,7 @@ export default {
     };
   },
   mounted() {
-    fetch("http://localhost:3000/shows/" + this.id)
+    fetch("https://hewbk1.herokuapp.com/shows/" + this.id)
       .then(data => data.json())
       .then(res => (this.show = res));
   }

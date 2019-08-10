@@ -234,7 +234,7 @@ export default {
 
       const resultado = axios({
         method: "post",
-        url: `http://localhost:3000/shows/${this.id}/submissions`,
+        url: `https://hewbk1.herokuapp.com/shows/${this.id}/submissions`,
         data: this.submission,
         responseType: "json"
       });

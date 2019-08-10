@@ -167,7 +167,7 @@ export default {
   mounted() {
     const resultado = axios({
       method: "post",
-      url: "http://localhost:3000/dashboard",
+      url: "https://hewbk1.herokuapp.com/dashboard",
       data: { token: localStorage.getItem("token") },
       responseType: "json"
     });

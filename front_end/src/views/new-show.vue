@@ -224,7 +224,7 @@ export default {
       
       const resultado = axios({
         method:"POST",
-        url: "http://localhost:3000/shows",
+        url: "https://hewbk1.herokuapp.com/shows",
         data: {
           show: this.show,
           token: localStorage.getItem("token"),

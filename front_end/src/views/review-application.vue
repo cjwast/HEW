@@ -209,7 +209,7 @@ export default {
       );
       const resultado = axios({
         method: "PUT",
-        url: `http://localhost:3000/shows/submissions/${id}/${status}`,
+        url: `https://hewbk1.herokuapp.com/shows/submissions/${id}/${status}`,
         responseType: "json"
       });
 
@@ -225,7 +225,7 @@ export default {
   created() {
     axios({
       method: "GET",
-      url: `http://localhost:3000/shows/${this.id}/submissions`,
+      url: `https://hewbk1.herokuapp.com/shows/${this.id}/submissions`,
       responseType: "json"
     })
       .then(response => {
