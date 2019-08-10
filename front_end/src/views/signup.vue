@@ -26,6 +26,9 @@
               <router-link to="/signup" class="nav-link">Signup</router-link>
             </li>
             <li class="nav-item px-2">
+              <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
+            </li>
+            <li class="nav-item px-2">
               <router-link to="/signup" class="btn btn-success">Curators: Create A Show</router-link>
             </li>
           </ul>
