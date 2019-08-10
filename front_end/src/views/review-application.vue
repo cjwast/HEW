@@ -32,17 +32,6 @@
               <router-link to="/signup" class="btn btn-success">Curators: Create A Show</router-link>
             </li>
           </ul>
-
-          <!-- VERIFIED - LOGGED IN USER -->
-          <!-- <ul class="navbar-nav ml-auto">
-          <li class="nav-item px-2">
-            <router-link to="/dashboard" class="btn btn-outline-light">Dashboard<span class="badge badge-light ml-2">27</span></router-link>
-          </li>
-
-          <li class="nav-item px-2">
-            <router-link to="/new-show" class="btn btn-success">Create A Show</router-link>
-          </li>
-          </ul>-->
         </div>
       </div>
     </nav>
@@ -79,49 +68,39 @@
                 </ul>
               </div>
               <div id="accordion">
-                <div>
+                <div v-for="(submission, i) of submissions" :key="i">
                   <div class="card-body" id="headingOne">
                     <div class="row d-flex justify-content-between">
                       <div class="col">
-                        <h3>Artist Name</h3>
+                        <h3>{{submission.artistName}}</h3>
                       </div>
                       <div class="col text-right">
-                        <button class="btn btn-sm btn-danger">Reject</button>
-                        <button class="btn btn-sm btn-warning mx-3">Maybe</button>
-                        <button class="btn btn-sm btn-success">Accept</button>
+                        <button
+                          class="btn btn-sm btn-danger"
+                          @click="updateSubmission(submission._id, 3)"
+                        >Reject</button>
+                        <button
+                          class="btn btn-sm btn-warning mx-3"
+                          @click="updateSubmission(submission._id, 4)"
+                        >Maybe</button>
+                        <button
+                          class="btn btn-sm btn-success"
+                          @click="updateSubmission(submission._id, 2)"
+                        >Accept</button>
                       </div>
                     </div>
-                    <div class="row d-flex justify-content-between py-3 px-3">
+                    <div class="row d-flex left-content-between py-3 px-3">
                       <h6>
-                        <a href="Website" target="_blank" class>
+                        <a v-bind:href="submission.website" target="_blank" class>
                           <i class="fas fa-external-link-square-alt mr-1"></i>Website
                         </a>
+                        &
                       </h6>
                       <h6>
-                        <a href="Website" target="_blank" class>
+                        <a v-bind:href="submission.instagram" target="_blank" class>
                           <i class="fas fa-external-link-square-alt mr-1"></i>Instagram
                         </a>
                       </h6>
-                      <h6>
-                        <a href="Website" target="_blank" class>
-                          <i class="fas fa-external-link-square-alt mr-1"></i>Statement
-                        </a>
-                      </h6>
-                      <h6>
-                        <a href="Website" target="_blank" class>
-                          <i class="fas fa-external-link-square-alt mr-1"></i>Submitted Images
-                        </a>
-                      </h6>
-                    </div>
-                    <div class>
-                      <a
-                        href
-                        class="text-muted"
-                        data-toggle="collapse"
-                        data-target="#collapseOne"
-                        aria-expanded="true"
-                        aria-controls="collapseOne"
-                      >Read Full Submission</a>
                     </div>
                   </div>
                   <div
@@ -130,73 +109,11 @@
                     aria-labelledby="headingOne"
                     data-parent="#accordion"
                   >
-                    <div
-                      class="card-body"
-                    >Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div>
+                    <div class="card-body">{{submission.fullyDescription}}</div>
                   </div>
+                  <hr class="p-0 m-0" />
                 </div>
                 <hr class="p-0 m-0" />
-
-                <div>
-                  <div class="card-body" id="headingOne">
-                    <div class="row d-flex justify-content-between">
-                      <div class="col">
-                        <h3>Artist Name</h3>
-                      </div>
-                      <div class="col text-right">
-                        <button class="btn btn-sm btn-danger">Reject</button>
-                        <button class="btn btn-sm btn-warning mx-3">Maybe</button>
-                        <button class="btn btn-sm btn-success">Accept</button>
-                      </div>
-                    </div>
-                    <div class="row d-flex justify-content-between py-3 px-3">
-                      <h6>
-                        <a href="Website" target="_blank" class>
-                          <i class="fas fa-external-link-square-alt mr-1"></i>Website
-                        </a>
-                      </h6>
-                      <h6>
-                        <a href="Website" target="_blank" class>
-                          <i class="fas fa-external-link-square-alt mr-1"></i>Instagram
-                        </a>
-                      </h6>
-                      <h6>
-                        <a href="Website" target="_blank" class>
-                          <i class="fas fa-external-link-square-alt mr-1"></i>Statement
-                        </a>
-                      </h6>
-                      <h6>
-                        <a href="Website" target="_blank" class>
-                          <i class="fas fa-external-link-square-alt mr-1"></i>Submitted Images
-                        </a>
-                      </h6>
-                    </div>
-                    <div class>
-                      <a
-                        href
-                        class="text-muted"
-                        data-toggle="collapse"
-                        data-target="#collapseTwo"
-                        aria-expanded="true"
-                        aria-controls="collapseTwo"
-                      >Read Full Submission</a>
-                    </div>
-                  </div>
-                  <div
-                    id="collapseTwo"
-                    class="collapse show"
-                    aria-labelledby="headingOne"
-                    data-parent="#accordion"
-                  >
-                    <div
-                      class="card-body"
-                    >Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div>
-                  </div>
-                </div>
-                <hr class="p-0 m-0" />
-
-
-
               </div>
             </div>
 
@@ -275,11 +192,48 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "review-applications"
+  name: "reviewApplications",
+  props: ["id"],
+  data() {
+    return {
+      submissions: []
+    };
+  },
+  methods: {
+    updateSubmission(id, status) {
+      console.log(
+        `this the ID => ${id}, and this one is the status => ${status}`
+      );
+      const resultado = axios({
+        method: "PUT",
+        url: `http://localhost:3000/shows/submissions/${id}/${status}`,
+        responseType: "json"
+      });
+
+      resultado
+        .then(response => {
+          this.$router.go();
+        })
+        .catch(err => {
+          console.log(`Este es el error => ${err}`);
+        });
+    }
+  },
+  created() {
+    axios({
+      method: "GET",
+      url: `http://localhost:3000/shows/${this.id}/submissions`,
+      responseType: "json"
+    })
+      .then(response => {
+        this.submissions = response.data.submissions;
+      })
+      .catch(err => {
+        console.log(`Este es el error => ${err}`);
+      });
+  }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>

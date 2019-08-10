@@ -65,16 +65,27 @@ router.post('/shows', (req, res) => {
 router.post('/dashboard/', (req, res, next) => {
   const { token } = req.body;
 
-  Show.find({ curator: req.params.userID })
-    .populate('curator')
-    .populate('venue')
-    .then(result => {
-      res.status(200).json(result);
-    })
-    .catch(err => {
-      res.status(500).json({ msg: err });
-      console.log(err);
-    })
+  jwt.verify(token, 'secretkey', (err, authData) => {
+    if (err) {
+      res.status(200).json({ message: err.message });
+    } else {
+      Show.find({ curator: authData.user._id })
+        .populate('curator')
+        .populate('venue')
+        .then(result => {
+          res.status(200).json(
+            {
+              shows: result,
+              user: authData.user
+            }
+          );
+        })
+        .catch(err => {
+          res.status(500).json({ message: err });
+          console.log(err);
+        })
+    }
+  })
 });
 
 /**URL /shows/:id */
@@ -96,9 +107,9 @@ router.get('/shows/:id', (req, res, next) => {
 /**URL /shows/:id/submissions */
 //GET regresa el listado de submisiones de un show
 router.get('/shows/:id/submissions', (req, res, next) => {
-  Submission.find({ show: req.params.id })
+  Submission.find({ show: req.params.id, status: 1 })
     .then(result => {
-      res.status(200).json(result);
+      res.status(200).json({ submissions: result });
     })
     .catch(err => {
       res.status(500).json({ msg: err });
@@ -113,6 +124,7 @@ router.post('/shows/:id/submissions', (req, res, next) => {
   const { artistName, artistEmail, website, instagram, fullyDescription, imageLink, addtionalLink, status, isSummited } = req.body;
   const newSubmission = new Submission({ artistName, artistEmail, website, instagram, fullyDescription, imageLink, addtionalLink, status, isSummited });
   newSubmission.show = req.params.id
+  newSubmission.status = 1
   newSubmission.save()
     .then(result => {
       res.status(200).json(
@@ -126,4 +138,23 @@ router.post('/shows/:id/submissions', (req, res, next) => {
       res.status(500).json({ msg: err });
     })
 });
+
+
+/**URL /shows/submissions/:id */
+//PUT nuevo metodo para actualizar las submissions
+router.put('/shows/submissions/:id/:status', (req, res, next) => {
+  Submission.findByIdAndUpdate(req.params.id, { status: req.params.status })
+    .then(result => {
+      res.status(200).json(
+        {
+          status: 'ok',
+          msg: 'the submission has been updated'
+        }
+      )
+    })
+    .catch(err => {
+      res.status(200).json({ msg: err });
+    })
+});
+
 module.exports = router;

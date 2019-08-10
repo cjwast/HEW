@@ -67,9 +67,13 @@ const routes = [
     },
   },
   {
-    path: '/review-application',
-    name: 'review-application',
+    path: '/review-application/:id',
+    name: 'reviewApplications',
     component: reviewApplication,
+    props: true,
+    beforeEnter: (to, from, next) => {
+      auth({ next, router });
+    },
   },
   {
     path: '/confirmed',
@@ -78,7 +82,7 @@ const routes = [
   },
   {
     path: '/show-details/:id',
-    name: 'show-details',
+    name: 'showDetails',
     component: showDetails,
     props: true
   },

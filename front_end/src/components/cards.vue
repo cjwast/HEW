@@ -56,7 +56,7 @@
                   <div class="row">
                     <router-link
                       class="btn btn-outline-primary btn-lg mx-3"
-                      :to="{name:'show-details', params: {id:show._id}}"
+                      :to="{name:'showDetails', params: {id:show._id}}"
                     >Artist Submission</router-link>
                   </div>
                 </div>

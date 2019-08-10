@@ -32,17 +32,6 @@
               <router-link to="/signup" class="btn btn-success">Curators: Create A Show</router-link>
             </li>
           </ul>
-
-          <!-- VERIFIED - LOGGED IN USER -->
-          <!-- <ul class="navbar-nav ml-auto">
-          <li class="nav-item px-2">
-            <router-link to="/dashboard" class="btn btn-outline-light">Dashboard<span class="badge badge-light ml-2">27</span></router-link>
-          </li>
-
-          <li class="nav-item px-2">
-            <router-link to="/new-show" class="btn btn-success">Create A Show</router-link>
-          </li>
-          </ul>-->
         </div>
       </div>
     </nav>
@@ -78,7 +67,7 @@
                   <div class="d-flex justify-content-between align-items-center text-light">
                     <p class="align-items-bottom text-secondary">
                       No account?
-                      <a href="signup.html">Sign Up.</a>
+                      <router-link to="/signup" class="nav-link">Signup</router-link>
                     </p>
                     <button @click="postLogin" class="btn btn-secondary">Login</button>
                     <!-- <button type="submit" class="btn btn-secondary">Login</button> -->

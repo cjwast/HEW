@@ -114,9 +114,6 @@
               <h5>What to include...</h5>
               <p class="text-justify">{{show.applicationInstructions}}</p>
             </div>
-            <div class="card-footer d-flex justify-content-center">
-              <router-link to="/apply" class="btn btn-primary">Artist Submission</router-link>
-            </div>
           </div>
         </div>
       </div>
@@ -126,10 +123,14 @@
 
 <script>
 export default {
-  name: "show-details",
+  name: "showDetails",
   props: ["id"],
   data() {
-    return { show: {} };
+    return {
+      show: {
+        venue: {}
+      }
+    };
   },
   mounted() {
     fetch("http://localhost:3000/shows/" + this.id)
