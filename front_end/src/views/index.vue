@@ -3,7 +3,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
       <div class="container">
-        <router-link to="/" class="navbar-brand">Hew</router-link>
+        <router-link to="/" class="navbar-brand active">Hew</router-link>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,6 +24,9 @@
             </li>
             <li class="nav-item px-2">
               <router-link to="/signup" class="nav-link">Signup</router-link>
+            </li>
+            <li class="nav-item px-2">
+              <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
             </li>
             <li class="nav-item px-2">
               <router-link to="/new-show" class="btn btn-success">Curators: Create A Show</router-link>
@@ -55,7 +58,7 @@
     <!-- look this tag at components folder -->
 
 
-    
+
     <!-- FOOTER -->
     <footer class="page-footer font-small pt-4 mt-5 bg-light">
       <div class="container">

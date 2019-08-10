@@ -26,6 +26,9 @@
               <router-link to="/signup" class="nav-link">Signup</router-link>
             </li>
             <li class="nav-item px-2">
+              <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
+            </li>
+            <li class="nav-item px-2">
               <router-link to="/signup" class="btn btn-success">Curators: Create A Show</router-link>
             </li>
           </ul>
@@ -141,7 +144,8 @@
                         <h3>Artist Name</h3>
                       </div>
                       <div class="col text-right">
-                        <button class="btn btn-sm btn-danger mx-3">Reject</button>
+                        <button class="btn btn-sm btn-danger">Reject</button>
+                        <button class="btn btn-sm btn-warning mx-3">Maybe</button>
                         <button class="btn btn-sm btn-success">Accept</button>
                       </div>
                     </div>
@@ -191,29 +195,8 @@
                 </div>
                 <hr class="p-0 m-0" />
 
-                <div class>
-                  <div class id="headingThree">
-                    <h5 class="mb-0">
-                      <button
-                        class="btn btn-link collapsed"
-                        data-toggle="collapse"
-                        data-target="#collapseThree"
-                        aria-expanded="false"
-                        aria-controls="collapseThree"
-                      >Collapsible Group Item #3</button>
-                    </h5>
-                  </div>
-                  <div
-                    id="collapseThree"
-                    class="collapse"
-                    aria-labelledby="headingThree"
-                    data-parent="#accordion"
-                  >
-                    <div
-                      class="card-body"
-                    >Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div>
-                  </div>
-                </div>
+
+
               </div>
             </div>
 
