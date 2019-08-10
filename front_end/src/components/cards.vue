@@ -107,7 +107,7 @@ export default {
   },
   methods: {
     getShows() {
-      fetch("http://localhost:3000/shows")
+      fetch("https://hewbk1.herokuapp.com/shows")
         .then(res => res.json())
         .then(data => {
           this.shows = data;
